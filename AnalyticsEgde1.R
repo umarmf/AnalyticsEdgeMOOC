@@ -1,3 +1,106 @@
 Sys.setlocale("LC_ALL", "C")
 8*6
 2^16
+8*10
+sqrt(16)
+abs(-65)
+?sqrt
+sq2 = sqrt(2)
+sq2
+hoursInYear = 365*24
+hoursInYear
+##All Variables
+ls()
+
+# Vectors
+c(3,2,5,6,7)
+
+Country = c("Brazil","USA","India") 
+Country[2]
+
+LifeExpantancy = c("65","66","67")
+LifeExpantancy[2]
+
+seq(1,100,2)
+
+CountryData = data.frame(Country,LifeExpantancy)
+CountryData
+
+CountryData$Population = c(99,999,9999)
+
+## Adding 2 Data Frames
+Country = c("France","China","UK")
+LifeExpantancy = c("55","45","37")
+Population = c(45,45,45)
+
+NewCountryData = data.frame(Country,LifeExpantancy,Population)
+NewCountryData
+
+AllCountryData = rbind(CountryData,NewCountryData)
+AllCountryData
+
+## Loading Files
+getwd()
+setwd("/Users/krishna/MOOC/AE")
+
+WHO =read.csv("WHO.csv")
+WHO
+head(WHO)
+str(WHO)
+summary(WHO)
+
+WHO_Europe = subset(WHO, Region=="Europe") 
+str(WHO_Europe)
+write.csv(WHO_Europe,"WHO_Europe.csv")
+ls()
+rm(WHO_Europe)
+
+## Exploring the WHO data set
+WHO$Under15
+nrow(WHO)
+mean(WHO$Under15)
+sd(WHO$Under15)
+summary(WHO$Under15)
+
+which.min(WHO$Under15)
+WHO$Country[which.min(WHO$Under15)]
+which.max(WHO$Under15)
+WHO$Country[124]
+
+plot(WHO$GNI,WHO$FertilityRate)
+Outliers = subset(WHO,GNI > 10000 & FertilityRate > 2.5)
+nrow(Outliers)
+Outliers[c("Country","GNI","FertilityRate")]
+
+mean(WHO$Over60)
+which.min(WHO$Over60)
+WHO$Country[183]
+
+which.max(WHO$LiteracyRate)
+WHO$Country[44]
+hist(WHO$CellularSubscribers)
+
+boxplot(WHO$LifeExpectancy ~ WHO$Region, xlab = "",ylab="Life Expetancy", main = "Life Expectancy of Countries by Region")
+table(WHO$Region)
+
+names(WHO)
+tapply(WHO$Over60,WHO$Region,mean)
+tapply(WHO$LiteracyRate,WHO$Region, min,na.rm="TRUE")
+tapply(WHO$ChildMortality,WHO$Region,min,na.rm="TRUE")
+
+## USDA National Nutrient Database for Standard Reference
+getwd()
+USDA = read.csv("USDA.csv")
+str(USDA)
+USDA$Sodium
+which.max(USDA$Sodium)
+names(USDA)
+USDA$Description[265]
+
+HighSodium = subset(USDA,Sodium >10000)
+nrow(HighSodium)
+HighSodium$Description
+match("CAVIAR",USDA$Description)
+USDA$Sodium[4154]
+summary(USDA$Sodium)
+sd(USDA$Sodium,na.rm="TRUE")
