@@ -104,3 +104,21 @@ match("CAVIAR",USDA$Description)
 USDA$Sodium[4154]
 summary(USDA$Sodium)
 sd(USDA$Sodium,na.rm="TRUE")
+
+## Plots
+plot(USDA$Protein,USDA$TotalFat,xlab="Protein",ylab="Fat",main = "Protein vs Fat", col = "red")
+hist(USDA$VitaminC, xlab = "Vitamin C (mg)", main = "Histogram of vitamin C levels", xlim=c(0,100), breaks =2000)
+boxplot(USDA$Sugar, main = "Boxplot of Sugar Levels", ylab ="Sugar (g)")
+
+## Adding Variables
+USDA$HighSodium = as.numeric(USDA$Sodium > mean(USDA$Sodium, na.rm = "TRUE"))
+str(HighSodium)
+str(USDA)
+USDA$HighProtein = as.numeric(USDA$Protein > mean(USDA$Protein, na.rm = "TRUE"))
+USDA$HighFat = as.numeric(USDA$TotalFat > mean(USDA$TotalFat, na.rm = "TRUE"))
+USDA$HighCarbs = as.numeric(USDA$Carbohydrate > mean(USDA$Carbohydrate, na.rm = "TRUE"))
+
+table(USDA$HighSodium, USDA$HighFat)
+
+tapply(USDA$Iron, USDA$HighProtein, mean , na.rm = "T")
+tapply(USDA$VitaminC, USDA$HighCarbs, summary , na.rm = T)
