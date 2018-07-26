@@ -1,4 +1,4 @@
-Sys.setlocale("LC_ALL", "C")
+
 8*6
 2^16
 8*10
@@ -40,8 +40,7 @@ AllCountryData = rbind(CountryData,NewCountryData)
 AllCountryData
 
 ## Loading Files
-getwd()
-setwd("/Users/krishna/MOOC/AE")
+
 
 WHO =read.csv("WHO.csv")
 WHO
