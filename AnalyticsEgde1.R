@@ -1,12 +1,3 @@
-
-8*6
-2^16
-8*10
-sqrt(16)
-abs(-65)
-?sqrt
-sq2 = sqrt(2)
-sq2
 hoursInYear = 365*24
 hoursInYear
 ##All Variables
